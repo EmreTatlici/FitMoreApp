@@ -11,7 +11,7 @@ import SwiftUI
 struct FitmoreApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FitnessTabView()
         }
     }
 }
