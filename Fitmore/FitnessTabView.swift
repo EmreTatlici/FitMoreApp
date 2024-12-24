@@ -8,8 +8,34 @@
 import SwiftUI
 
 struct FitnessTabView: View {
+    @State var selectedTab = "Home"
+    
+    init() {
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.stackedLayoutAppearance.selected.iconColor = .green
+        appearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.green]
+        
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+        
+    }
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView(selection: $selectedTab) {
+            HomeView()
+                .tag("Home")
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+            HistoricDataView()
+                .tag("Historic")
+                .tabItem {
+                    Image(systemName: "chart.line.uptrend.xyaxis")
+                    Text("Charts")
+                }
+        }
     }
 }
 
